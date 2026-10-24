@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "habittracker",
     "ios": {
       "supportsTablet": true
     },
@@ -24,7 +25,15 @@
     "plugins": [
       "expo-router",
       "expo-status-bar",
-      "expo-image"
+      "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O app precisa acessar sua galeria para você escolher fotos do seu hábito.",
+          "cameraPermission": "O app precisa da câmera para você registrar fotos do seu hábito no momento.",
+          "microphonePermission": false
+        }
+      ]
     ]
   }
 }

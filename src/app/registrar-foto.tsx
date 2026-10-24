@@ -1,3 +1,6 @@
+// GALERIA → PEDIR: Não precisa (o seletor do próprio celular já resolve) | LER: resultado.assets[0].uri | PARAR: Se a pessoa cancelar
+// CÂMERA  → PEDIR: requestCameraPermissionsAsync() | LER: resultado.assets[0].uri | PARAR: Se a permissão for negada/bloqueada ou se a pessoa cancelar
+
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
@@ -9,7 +12,7 @@ export default function TelaRegistrarFoto() {
   const [fotoUri, setFotoUri] = useState<string | null>(null);
 
   async function escolherDaGaleria() {
-    // Não precisa pedir permissão na mão antes porque o seletor nativo do sistema já cuida disso ao abrir.
+    // Não precisa pedir permissão na mão antes porque o seletor nativo do sistema á cuida disso ao abrir.
 
     const resultado = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,

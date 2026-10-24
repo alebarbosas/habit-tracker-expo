@@ -1,26 +1,31 @@
-import { Link } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { Link, useRouter } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-export default function HomeScreen() {
+export default function TelaInicial() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Rastreador de Hábitos</Text>
-      
-      <Link href="/registrar-foto" style={styles.link}>
-        Exercício 1 — Registrar foto
-      </Link>
+      <Text style={styles.titulo}>Meus Hábitos</Text>
 
-      <Link href="/galeria" style={styles.link}>
-        Exercício 2 — Galeria múltipla
-      </Link>
+      {/* Navegação via código imperativo (router.push) */}
+      <Pressable
+        style={styles.botaoPrincipal}
+        onPress={() => router.push('/registrar-foto')}
+      >
+        <Text style={styles.textoBotao}>Registrar foto do hábito</Text>
+      </Pressable>
 
-      <Link href="/foto-camera" style={styles.link}>
-        Exercício 3 — Câmera e permissões
-      </Link>
+      {/* Navegação via componente declarativo (Link) */}
+      <View style={styles.menuLinks}>
+        <Link href="/galeria" style={styles.link}>
+          Ver galeria de progresso
+        </Link>
 
-      <Link href="/sobre" style={styles.link}>
-        Exercício 4 — Sobre o app
-      </Link>
+        <Link href="/sobre" style={styles.link}>
+          Sobre o aplicativo
+        </Link>
+      </View>
     </View>
   );
 }
@@ -28,13 +33,32 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 24,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 16,
+    gap: 24,
   },
   titulo: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
+    color: '#333',
+  },
+  botaoPrincipal: {
+    backgroundColor: '#f26522',
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 10,
+    width: '100%',
+    alignItems: 'center',
+  },
+  textoBotao: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+  menuLinks: {
+    gap: 16,
+    alignItems: 'center',
   },
   link: {
     color: '#f26522',

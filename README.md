@@ -1,27 +1,21 @@
-# Habit Tracker Expo
+# Habit Tracker Expo — Aula 6
 
 **Disciplina:** Desenvolvimento Mobile (2026.2.DM) — CESAR School
-**Branch:** `feature/ads025_2026-2`
 
 ## Sobre o projeto
+Um aplicativo para acompanhamento de hábitos diários. Nesta etapa do projeto, adicionamos recursos para registrar fotos de progresso usando a câmera do celular ou selecionando imagens da galeria.
 
-Rastreador de Micro-hábitos e Condicionamento Físico: um aplicativo voltado para rotina e bem-estar, onde o usuário registra pequenos hábitos diários e monitora suas atividades físicas e treinos.
+## Navegação e Rotas
+- `/` — Tela principal com a lista de hábitos e os atalhos de navegação.
+- `/registrar-foto` — Tirar foto com a câmera ou escolher uma imagem da galeria.
+- `/galeria` — Selecionar até 6 fotos para exibir numa grade de progresso.
+- `/sobre` — Informações sobre o projeto, versão e avisos de armazenamento.
 
-Este projeto é usado nas atividades guiadas e aplicadas da disciplina ao longo do semestre. Cada aula adiciona uma camada nova por cima da anterior — o histórico de commits desta branch é, em si, um registro do progresso.
+## Observação técnica
+- **Armazenamento em memória:** As fotos capturadas e selecionadas ficam salvas temporariamente no estado do app enquanto ele está em execução. Elas não persistem após o encerramento da aplicação.
 
-## Estado atual (Aula 1)
-
-Scaffold inicial gerado com Expo (`create-expo-app`, template `blank-typescript`). Nenhuma tela ou modelagem de domínio foi implementada ainda — isso é propositalmente deixado para as próximas aulas. Veja os comentários `TODO` em `App.tsx`.
-
-## Como rodar
+## Como rodar o projeto
+Para subir o aplicativo limpando o cache, rode no terminal:
 
 ```bash
-npm install
-npx expo start
-```
-
-Abra o app **Expo Go** no celular e escaneie o QR code (ou use um emulador). Requisito: **Node.js 22.11+**.
-
-## Próximos passos (exercícios)
-
-Os `TODO` deixados no código apontam para os exercícios de `exercises.md` de cada aula. Resolva-os na ordem em que aparecem e mantenha um commit por exercício (ou por bloco), para que o histórico da branch sirva de evidência de progresso.
+npx expo start --clear

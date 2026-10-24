@@ -18,6 +18,12 @@ export default function LayoutRaiz() {
         }}
       />
 
+      {/* Tela galeria de progresso */}
+      <Stack.Screen
+        name="galeria"
+        options={{ title: 'Galeria de progresso' }}
+      />
+
       {/* Tela sobre */}
       <Stack.Screen
         name="sobre"
