@@ -17,6 +17,10 @@ export default function HomeScreen() {
       <Link href="/foto-camera" style={styles.link}>
         Exercício 3 — Câmera e permissões
       </Link>
+
+      <Link href="/sobre" style={styles.link}>
+        Exercício 4 — Sobre o app
+      </Link>
     </View>
   );
 }
