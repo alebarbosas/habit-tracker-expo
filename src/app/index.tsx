@@ -7,7 +7,15 @@ export default function HomeScreen() {
       <Text style={styles.titulo}>Rastreador de Hábitos</Text>
       
       <Link href="/registrar-foto" style={styles.link}>
-        Registrar foto
+        Exercício 1 — Registrar foto
+      </Link>
+
+      <Link href="/galeria" style={styles.link}>
+        Exercício 2 — Galeria múltipla
+      </Link>
+
+      <Link href="/foto-camera" style={styles.link}>
+        Exercício 3 — Câmera e permissões
       </Link>
     </View>
   );
