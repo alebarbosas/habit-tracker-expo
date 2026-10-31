@@ -1,5 +1,12 @@
-// Atividade 1 — Rota inicial
-// Onde: src/app/index.tsx
-// Aponta para a tela de hábitos existente em src/screens/tela-habitos.tsx
-
+import { useRouter } from 'expo-router';
+import { Pressable, Text } from 'react-native';
 export { default } from '../screens/tela-habitos';
+
+<Pressable onPress={() => 
+  router.push({
+    pathname: '/habit/[id]',
+    params: { id: '5' }
+  })
+}>
+  <Text>Abrir hábito 5</Text>
+</Pressable>

@@ -1,6 +1,3 @@
-// Atividade 1 — Tela Sobre
-// Onde: src/app/sobre.tsx
-
 import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
