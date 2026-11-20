@@ -5,20 +5,26 @@ import { StyleSheet, Switch, Text, View } from 'react-native';
 import { useTheme } from '../context/theme-context';
 
 export function TelaConfiguracoes() {
-  // TODO Ex 3.5: Consumir { isDark, toggleTheme } de useTheme()
   const { isDark, toggleTheme } = useTheme();
-  void isDark;
-  void toggleTheme;
 
   return (
-    // TODO Ex 3.6: Alterar backgroundColor e cor do texto conforme isDark e ligar o <Switch> a isDark e toggleTheme
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Configurações</Text>
-      <Text style={styles.texto}>Gerencie preferências e o tema do aplicativo.</Text>
+    <View style={[styles.container, { backgroundColor: isDark ? '#121212' : '#fff' }]}>
+      <Text style={[styles.titulo, { color: isDark ? '#fff' : '#111' }]}>Configurações</Text>
+      <Text style={[styles.texto, { color: isDark ? '#ccc' : '#555' }]}>
+        Gerencie preferências e o tema do aplicativo.
+      </Text>
 
-      <View style={styles.linhaTema}>
-        <Text style={styles.rotulo}>Modo Escuro</Text>
-        <Switch value={false} onValueChange={() => {}} />
+      <View
+        style={[
+          styles.linhaTema,
+          {
+            borderColor: isDark ? '#333' : '#ddd',
+            backgroundColor: isDark ? '#1E1E1E' : '#fff',
+          },
+        ]}
+      >
+        <Text style={[styles.rotulo, { color: isDark ? '#fff' : '#111' }]}>Modo Escuro</Text>
+        <Switch value={isDark} onValueChange={toggleTheme} />
       </View>
     </View>
   );

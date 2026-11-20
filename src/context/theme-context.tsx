@@ -12,26 +12,39 @@ type ThemeContextType = {
 
 const THEME_STORAGE_KEY = '@habits:theme';
 
-// TODO Ex 3.1: Criar ThemeContext com createContext<ThemeContextType | undefined>(undefined)
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: PropsWithChildren) {
-  // TODO Ex 3.2: Criar estado isDark (useState(false)) e função toggleTheme
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // TODO Atividade Aplicada 1.1: Carregar a preferência de tema salva com AsyncStorage.getItem(THEME_STORAGE_KEY)
-    void AsyncStorage;
-    void THEME_STORAGE_KEY;
+    async function loadTheme() {
+      try {
+        const savedTheme = await AsyncStorage.getItem(THEME_STORAGE_KEY);
+        if (savedTheme !== null) {
+          const parsed = JSON.parse(savedTheme);
+          if (typeof parsed === 'boolean') {
+            setIsDark(parsed);
+          }
+        }
+      } catch (error) {
+        console.error('Erro ao carregar preferência de tema:', error);
+      }
+    }
+
+    loadTheme();
   }, []);
 
   const toggleTheme = () => {
-    // TODO Ex 3.2 / Atividade Aplicada 1.2: Alternar isDark com atualização funcional (prev => !prev)
-    // e salvar a nova preferência no disco com AsyncStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(nextValue))
-    void setIsDark;
+    setIsDark((prev) => {
+      const nextValue = !prev;
+      AsyncStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(nextValue)).catch((error) => {
+        console.error('Erro ao salvar preferência de tema:', error);
+      });
+      return nextValue;
+    });
   };
 
-  // TODO Ex 3.3: Retornar <ThemeContext.Provider value={{ isDark, toggleTheme }}>{children}</ThemeContext.Provider>
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       {children}
@@ -40,10 +53,9 @@ export function ThemeProvider({ children }: PropsWithChildren) {
 }
 
 export function useTheme(): ThemeContextType {
-  // TODO Ex 3.4: Ler contexto com useContext(ThemeContext) e lançar erro se usado fora do ThemeProvider
   const context = useContext(ThemeContext);
   if (!context) {
-    return { isDark: false, toggleTheme: () => {} };
+    throw new Error('useTheme deve ser usado dentro de um ThemeProvider');
   }
   return context;
 }
